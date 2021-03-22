@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -45,8 +47,9 @@ public class Controller_Edit_Filtered_Customer implements Initializable {
         TwiNr_textbox.setText(EinstiegsPunkt.tbo.getTwiNr());
         MacAdresse_Textbox.setText(EinstiegsPunkt.tbo.getMac());
     }
+
     @FXML
-    public void Abort(){
+    public void Abort() {
 
         try {
             Stage stage = (Stage) Abort_Button.getScene().getWindow();
@@ -58,10 +61,20 @@ public class Controller_Edit_Filtered_Customer implements Initializable {
     }
 
     public void InsertAndUpdate() throws SQLException {
-        new DatenbankHandler().Connect();
-        String queryInstert = "";
-        String queryUpdate = "";
 
+
+        new DatenbankHandler().Connect();
+
+        String queryInstert = String.format(
+                "INSERT INTO History (Kunde,Standort,Device_Name,Status,Servicelvl,Lieferant,ServiceBegin,ServiceEnde,Liefertermin,Seriennummer,TWI_NR,MAC_Adresse) Values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+                Kunde_Textbox.getText(), Standort_Textbox.getText(), Devicename_Textbox.getText(), Status_Textbox.getText(), ServiceLvl_Textbox.getText(), Lieferant_Textbox.getText(), ServiceAnfang_Textbox.getText(), ServiceEnde_Texbox.getText(), Liefertermin_Textbox.getText(), Seriennummer_Textbox.getText(), TwiNr_textbox.getText(), MacAdresse_Textbox.getText());
+        String queryUpdate = String.format("UPDATE DEVICE2(Kunde,Standort,Device_Name,Status,Servicelvl,Lieferant,ServiceBegin,ServiceEnde,Liefertermin,Seriennummer,TWI_NR,MAC_Adresse) Values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') where Mac_Adresse=" + MacAdresse_Textbox.getText() +")",
+        Kunde_Textbox.getText(), Standort_Textbox.getText(), Devicename_Textbox.getText(), Status_Textbox.getText(), ServiceLvl_Textbox.getText(), Lieferant_Textbox.getText(), ServiceAnfang_Textbox.getText(), ServiceEnde_Texbox.getText(), Liefertermin_Textbox.getText(), Seriennummer_Textbox.getText(), TwiNr_textbox.getText(), MacAdresse_Textbox.getText());
+
+        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(queryInstert);
+        PreparedStatement stm2 = DatenbankHandler.connection.prepareStatement(queryUpdate);
+        ResultSet rs2 = stm2.executeQuery();
+        ResultSet rs = stm.executeQuery();
 
 
     }
