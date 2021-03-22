@@ -142,7 +142,7 @@ public class Controller_Filtered_Customer implements Initializable {
         FilteredList<Tableview_Controller> filteredList = new FilteredList<>(DbListe);
 
 
-        // 2. Set the filter Predicate whenever the filter changes.
+        // predikat setzen bei änderungen.
         Searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(Tableview_Controller -> {
                 // If filter text is empty, display all persons.
@@ -150,24 +150,22 @@ public class Controller_Filtered_Customer implements Initializable {
                     return true;
                 }
 
-                // Compare first name and last name of every person with filter text.
+                // vergleich.
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (Tableview_Controller.getSpalte1().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                    return true;
                 } else if (Tableview_Controller.getSpalte11().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
+                    return true;
                 }
-                return false; // Does not match.
+                return false;
             });
         });
-        // 3. Wrap the FilteredList in a SortedList.
+        //  Wrap liste.
         SortedList<Tableview_Controller> sortedData = new SortedList<>(filteredList);
 
-        // 4. Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(chart.comparatorProperty());
 
-        // 5. Add sorted (and filtered) data to the table.
         chart.setItems(sortedData);
 
     }

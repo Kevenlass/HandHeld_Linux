@@ -3,6 +3,7 @@ package Main.controller;
 import Main.EinstiegsPunkt;
 import Main.enums.FXML_Scenes;
 import Main.utils.DatenbankHandler;
+import Main.utils.ZeitComboBoxen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,8 +64,7 @@ public class Controller_Dataset_Device implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         time();
         try {
-            // Ersetzen durch Datepicker controls !!!!!!!!!!!!!!!!!!
-            //new ZeitComboBoxen().LoadComboBoxes(ComboBox_Tag_Anfang, ComboBox_Monat_Anfang, ComboBox_Jahr_Anfang, ComboBox_Tag_Ende, ComboBox_Monat_Ende, ComboBox_Jahr_Ende);
+            new ZeitComboBoxen().LoadComboBoxes(ComboBox_Tag_Anfang, ComboBox_Monat_Anfang, ComboBox_Jahr_Anfang, ComboBox_Tag_Ende, ComboBox_Monat_Ende, ComboBox_Jahr_Ende);
             kundencmbxladen();
             DeviceTypeTabelle();
             CustomerTabelle();
@@ -166,7 +166,7 @@ public class Controller_Dataset_Device implements Initializable {
             String Devicename = rs.getString("Device_Type_id");
             EinstiegsPunkt.g_u_s.setDeviceTypeID(Devicename);
             EinstiegsPunkt.g_u_s.setDevicename(comboFieldGeraet.getValue().toString());
-        }
+        }     
         DatenbankHandler.connection.close();
     }
 

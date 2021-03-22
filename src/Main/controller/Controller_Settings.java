@@ -22,7 +22,7 @@ import java.util.prefs.Preferences;
 
 public class Controller_Settings implements Initializable {
     @FXML
-    private Button Save_Button;
+    private Button Save_Button, Exit_Button1;
     @FXML
     private TextField IpAdresseTextbox, sid_Textfield, dbuserpasswordTextfield, dbuseridTextfield, NewUser_textbox, NewUserPasswort_TextBox, resetPassword_textfield;
     @FXML
@@ -91,6 +91,18 @@ public class Controller_Settings implements Initializable {
         }
     }
 
+    public void ExitButton() {
+        try {
+            Stage stage2 = (Stage) Exit_Button1.getScene().getWindow();
+            stage2.close();
+            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Login);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private void user_id_password() {
         if (dbuserpasswordTextfield.getText().isEmpty() || dbuseridTextfield.getText().isEmpty() || dbuseridTextfield.getText().equals("")) {
             System.out.println("ist leer");
@@ -125,12 +137,12 @@ public class Controller_Settings implements Initializable {
     }
 
     private void deleteExistUser() throws SQLException {
-        if (!DeleteUser_ComboBox.getItems().equals("Default") ) {
+        if (!DeleteUser_ComboBox.getItems().equals("Default")) {
             if (DeleteUser_ComboBox.getSelectionModel().getSelectedItem() != null) {
                 String userNameCombo = DeleteUser_ComboBox.getSelectionModel().getSelectedItem().toString();
                 DatenbankHandler dbh = new DatenbankHandler();
                 dbh.deleteExistUser(userNameCombo);
-            }else if (DeleteUser_ComboBox.getSelectionModel().getSelectedItem() == null || DeleteUser_ComboBox.getSelectionModel().getSelectedItem().equals("")) {
+            } else if (DeleteUser_ComboBox.getSelectionModel().getSelectedItem() == null || DeleteUser_ComboBox.getSelectionModel().getSelectedItem().equals("")) {
                 System.out.println("delete user is null");
             }
         }

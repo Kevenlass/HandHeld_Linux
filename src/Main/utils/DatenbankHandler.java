@@ -55,6 +55,7 @@ public class DatenbankHandler {
             }
             System.out.println();
         }
+        //System.out.println("Mit Oracle Verbunden!!");
         return db;
     }
 
