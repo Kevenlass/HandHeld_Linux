@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="642.0" style="-fx-background-color: #2E2E2E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Hauptmenue">
+   <children>
+      <Button fx:id="History_Button" layoutX="58.0" layoutY="103.0" mnemonicParsing="false" onAction="#History" prefHeight="125.0" prefWidth="331.0" style="-fx-background-color: white;" text="Device History">
+         <font>
+            <Font name="Times New Roman Bold" size="33.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="Service_Button" layoutX="58.0" layoutY="529.0" minHeight="57.0" minWidth="129.0" mnemonicParsing="false" onAction="#SceneKundenFilter" prefHeight="125.0" prefWidth="331.0" text="Edit Customer">
+         <font>
+            <Font name="Times New Roman Bold" size="33.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="Neuer_Datensatz_Button" layoutX="58.0" layoutY="245.0" mnemonicParsing="false" onAction="#New_Dataset" prefHeight="125.0" prefWidth="331.0" text="New Device">
+         <font>
+            <Font name="Times New Roman Bold" size="33.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="Neuer_Kunde_Button" layoutX="58.0" layoutY="387.0" mnemonicParsing="false" onAction="#New_Customer" prefHeight="125.0" prefWidth="331.0" text="New Customer">
+         <font>
+            <Font name="Times New Roman Bold" size="33.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Pane layoutX="441.0" layoutY="-4.0" prefHeight="726.0" prefWidth="201.0" style="-fx-background-color: black;">
+         <children>
+            <Label fx:id="userSystemName" layoutX="31.0" layoutY="7.0" prefHeight="37.0" prefWidth="155.0" text="Ewald Seebacher" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="systemDate" layoutX="50.0" layoutY="56.0" prefHeight="27.0" prefWidth="101.0" text="22.12.2020" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="systemTime" layoutX="70.0" layoutY="102.0" text="UhrZeit" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="58.0" layoutY="14.0" prefHeight="68.0" prefWidth="112.0" text="TWI " textFill="#301e94">
+         <font>
+            <Font name="Comic Sans MS Bold" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="170.0" layoutY="20.0" prefHeight="47.0" prefWidth="225.0" text="Hand-Held" textFill="#dfe43b">
+         <font>
+            <Font name="Comic Sans MS Bold" size="41.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

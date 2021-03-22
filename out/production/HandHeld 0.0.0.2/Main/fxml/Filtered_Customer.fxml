@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="706.0" prefWidth="1325.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.fxml.FilteredCustomer">
+   <children>
+      <Pane layoutX="1117.0" prefHeight="715.0" prefWidth="219.0" style="-fx-background-color: black;" />
+      <TableView layoutX="23.0" layoutY="22.0" prefHeight="589.0" prefWidth="1069.0">
+        <columns>
+          <TableColumn prefWidth="149.0" text="Kunde" />
+          <TableColumn prefWidth="129.0" text="Standort" />
+            <TableColumn prefWidth="100.0" text="ServiceLvL" />
+            <TableColumn prefWidth="92.0" text="Service Ende" />
+            <TableColumn prefWidth="186.0" text="Gerät" />
+            <TableColumn prefWidth="97.0" text="TwiNr." />
+            <TableColumn prefWidth="161.0" text="Seriennummer" />
+            <TableColumn prefWidth="154.0" text="Status" />
+        </columns>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TableView>
+      <Button layoutX="23.0" layoutY="641.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="101.0" text="Zurück">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="928.0" layoutY="641.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="164.0" text="Anfordern">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

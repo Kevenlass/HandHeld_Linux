@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="706.0" prefWidth="1325.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Filtered_Customer">
+   <children>
+      <Pane layoutX="1117.0" prefHeight="715.0" prefWidth="219.0" style="-fx-background-color: black;">
+         <children>
+            <ComboBox fx:id="Search_DropBox" layoutX="35.0" layoutY="118.0" prefHeight="44.0" prefWidth="158.0" promptText="Suchen...." visibleRowCount="100" />
+            <TextField fx:id="Searchfield" layoutX="35.0" layoutY="214.0" />
+         </children></Pane>
+      <TableView fx:id="chart" layoutX="23.0" layoutY="22.0" prefHeight="581.0" prefWidth="1068.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </TableView>
+      <Button layoutX="23.0" layoutY="641.0" mnemonicParsing="false" onAction="#returnToFilter" prefHeight="44.0" prefWidth="101.0" text="Zurück">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="anfordern" layoutX="928.0" layoutY="641.0" mnemonicParsing="false" onAction="#getobjectbutton" prefHeight="44.0" prefWidth="164.0" text="Anfordern">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

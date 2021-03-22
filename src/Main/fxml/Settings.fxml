@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="498.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Settings">
+   <children>
+      <Button fx:id="Save_Button" layoutX="705.0" layoutY="456.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="SAVE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font></Button>
+      <TextField fx:id="sid_Textfield" layoutX="184.0" layoutY="90.0" prefHeight="25.0" prefWidth="79.0" />
+      <TextField fx:id="IpAdresseTextbox" layoutX="20.0" layoutY="90.0" />
+      <TextField fx:id="dbuseridTextfield" layoutX="281.0" layoutY="90.0" />
+      <PasswordField fx:id="dbuserpasswordTextfield" layoutX="450.0" layoutY="90.0" />
+      <Label layoutX="74.0" layoutY="66.0" text="IP Adresse">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label layoutX="203.0" layoutY="66.0" text="SID">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label layoutX="296.0" layoutY="66.0" text=" LOGIN USERNAME">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label layoutX="465.0" layoutY="66.0" text=" LOGIN PASSWORT">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Label layoutX="647.0" layoutY="66.0" text="LISTENER PORT">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></Label>
+      <Button fx:id="portrb1522" layoutX="696.0" layoutY="86.0" mnemonicParsing="false" onMouseClicked="#whichRbIsClicked2" text="1522" />
+      <Button fx:id="portBtn1521" layoutX="631.0" layoutY="86.0" mnemonicParsing="false" onMouseClicked="#portSelected" text="1521" />
+      <Label layoutX="131.0" layoutY="14.0" text="_________________  Datenbank  _________________">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="162.0" text="___________________  Create New User  ___________________ ">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="255.0" text="___________________  Delete Exist User  ___________________ ">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="346.0" text="___________________  Passwort Reset User  ________________ ">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="DeleteUser_ComboBox" layoutX="131.0" layoutY="303.0" prefHeight="26.0" prefWidth="198.0" />
+      <ComboBox fx:id="PasswortReset_ComboBox" layoutX="131.0" layoutY="394.0" prefHeight="26.0" prefWidth="198.0" />
+      <TextField fx:id="resetPassword_textfield" layoutX="477.0" layoutY="394.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="NewUser_textbox" layoutX="131.0" layoutY="208.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="NewUserPasswort_TextBox" layoutX="477.0" layoutY="208.0" prefHeight="26.0" prefWidth="218.0" />
+      <Label layoutX="84.0" layoutY="212.0" text="User">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="305.0" text="User">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="396.0" text="User">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="398.0" layoutY="212.0" text="Passwort">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="398.0" layoutY="396.0" text="Passwort">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="Exit_Button1" layoutX="17.0" layoutY="456.0" mnemonicParsing="false" onAction="#ExitButton" prefHeight="26.0" prefWidth="114.0" text="Exit">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

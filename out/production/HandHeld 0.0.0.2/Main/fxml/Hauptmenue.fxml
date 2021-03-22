@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="518.0" style="-fx-background-color: #2E2E2E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Hauptmenue">
+   <children>
+      <Button fx:id="Exit_Button" layoutX="14.0" layoutY="594.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" text="Exit">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Pane layoutX="338.0" prefHeight="644.0" prefWidth="180.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="Service_Button" layoutX="26.0" layoutY="40.0" mnemonicParsing="false" onAction="#SceneKundenFilter" prefHeight="57.0" prefWidth="129.0" text="Service">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Uebersicht_Button" layoutX="26.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="129.0" text="Übersicht">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Neuer_Datensatz_Button" layoutX="26.0" layoutY="245.0" mnemonicParsing="false" onAction="#New_Dataset" prefHeight="57.0" prefWidth="129.0" text="Neuer &#10;Datensatz">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Neuer_Kunde_Button" layoutX="26.0" layoutY="349.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="129.0" text="Neuer Kunde">
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label layoutX="96.0" layoutY="612.0" prefHeight="17.0" prefWidth="54.0" text="Ver. 1.0" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="14.0" layoutY="141.0" prefHeight="57.0" prefWidth="316.0" text="Kompletten KundenDatensatz Aufrufen&#10;Kann hier nicht Verändert Werden!&quot;" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="14.0" layoutY="34.0" prefHeight="57.0" prefWidth="309.0" text="Veränderungen Am Datensatz &#10;Standort,Status, ServiveEnde usw." textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="14.0" layoutY="240.0" prefHeight="57.0" prefWidth="309.0" text="Neuen Datensatz in Form eines Neuen&#10;Gerätes Hinzufügen." textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="14.0" layoutY="349.0" prefHeight="57.0" prefWidth="296.0" text="Neuen Kunden / Project Anlegen" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>
