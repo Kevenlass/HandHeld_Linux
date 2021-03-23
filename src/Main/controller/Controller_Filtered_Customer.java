@@ -180,7 +180,7 @@ public class Controller_Filtered_Customer implements Initializable {
         EinstiegsPunkt.tbo.setSeriennummer(getitem.getSpalte10());
         EinstiegsPunkt.tbo.setgeraetenamen(getitem.getSpalte3());
         EinstiegsPunkt.tbo.setMac(getitem.getSpalte12());
-        EinstiegsPunkt.tbo.setdatum(getitem.getSpalte9());
+        EinstiegsPunkt.tbo.setLiefertermin(getitem.getSpalte9());
         EinstiegsPunkt.tbo.setTwiNr(getitem.getSpalte11());
         EinstiegsPunkt.tbo.setServicelvl(getitem.getSpalte5());
         EinstiegsPunkt.tbo.setServiceende(getitem.getSpalte8());
