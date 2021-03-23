@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -237,8 +238,8 @@ public class Controller_Dataset_Device implements Initializable {
 
     public void Datensatz_in_SQL_Übergeben() throws SQLException {
         String Kundenname = comboFieldKunde.getSelectionModel().getSelectedItem().toString();
-        String ServiceBegin = ComboBox_Tag_Anfang.getSelectionModel().getSelectedItem().toString() + "/" + ComboBox_Monat_Anfang.getSelectionModel().getSelectedItem().toString() + "/" + ComboBox_Jahr_Anfang.getSelectionModel().getSelectedItem().toString();
-        String ServiceEnde = ComboBox_Tag_Ende.getSelectionModel().getSelectedItem().toString() + "/" + ComboBox_Monat_Ende.getSelectionModel().getSelectedItem().toString() + "/" + ComboBox_Jahr_Ende.getSelectionModel().getSelectedItem().toString();
+        String ServiceBegin = ComboBox_Tag_Anfang.getSelectionModel().getSelectedItem().toString() + "." + ComboBox_Monat_Anfang.getSelectionModel().getSelectedItem().toString() + "." + ComboBox_Jahr_Anfang.getSelectionModel().getSelectedItem().toString();
+        String ServiceEnde = ComboBox_Tag_Ende.getSelectionModel().getSelectedItem().toString() + "." + ComboBox_Monat_Ende.getSelectionModel().getSelectedItem().toString() + "." + ComboBox_Jahr_Ende.getSelectionModel().getSelectedItem().toString();
         String StandOrt = comboFieldStandort.getSelectionModel().getSelectedItem().toString();
         String Status = comboboxStatus.getSelectionModel().getSelectedItem().toString();
         String Seriennummer = textfield_seriennummer.getText();
@@ -250,9 +251,12 @@ public class Controller_Dataset_Device implements Initializable {
         String Device_Name = comboFieldGeraet.getSelectionModel().getSelectedItem().toString();
         new DatenbankHandler().Connect();
 
+       //String query = "INSERT INTO tuser (objectID, userID, userName, password, birthday) values (urObjID.nextval, :userID, :userName, :password, :birthday)"
+
+
         String query_lesbar = String.format(
                 "INSERT INTO Device2 (Kunde,Standort,Device_Name,Status,Servicelvl,Lieferant,ServiceBegin,ServiceEnde,Liefertermin,Seriennummer,TWI_NR,MAC_Adresse) Values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
-                Kundenname, StandOrt, Device_Name, Status, ServiceLVL, Lieferant, ServiceBegin, ServiceEnde, Liefertermin, Seriennummer, Twi_Nr, Mac_Adresse);
+                Kundenname, StandOrt, Device_Name, Status, ServiceLVL, Lieferant, ServiceBegin, ServiceEnde, LieferterminDT.getValue().format(DateTimeFormatter.ofPattern("dd,MM,yyyy")), Seriennummer, Twi_Nr, Mac_Adresse);
 
         //String query = "INSERT INTO CUSTOMERTEST (Customer_ID,Group_ID,Kunden_name,Standort) Values (" + "'" + g_u_s.getKunden_ID() + "'" +","+ "'" + g_u_s.getGroup_id() + "'" +","+ "'" + g_u_s.getName() + "'" +","+ "'" + g_u_s.getFB_TWI() + "'" + ")";
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query_lesbar);
