@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="642.0" style="-fx-background-color: #2E2E2E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Hauptmenue">
    <children>
-      <Button fx:id="History_Button" layoutX="58.0" layoutY="103.0" mnemonicParsing="false" onAction="#History" prefHeight="125.0" prefWidth="331.0" style="-fx-background-color: white;" text="Device History">
+      <Button fx:id="Uebersicht_Button" layoutX="58.0" layoutY="103.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="331.0" style="-fx-background-color: white;" text="Device History">
          <font>
             <Font name="Times New Roman Bold" size="33.0" />
          </font>

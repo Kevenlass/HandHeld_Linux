@@ -3,7 +3,8 @@ package Main.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServiceLocater {
+public class
+ServiceLocater {
 
     // Hier wird eine neue hashmap instanziiert um einen string mit einem object zu verknüpfen
     private static HashMap<String, Object> services = new HashMap<String, Object>();

@@ -142,7 +142,7 @@ public class Controller_Filtered_Customer implements Initializable {
         FilteredList<Tableview_Controller> filteredList = new FilteredList<>(DbListe);
 
 
-        // predikat setzen bei änderungen.
+        // 2. Set the filter Predicate whenever the filter changes.
         Searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(Tableview_Controller -> {
                 // If filter text is empty, display all persons.
@@ -150,22 +150,24 @@ public class Controller_Filtered_Customer implements Initializable {
                     return true;
                 }
 
-                // vergleich.
+                // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (Tableview_Controller.getSpalte1().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
+                    return true; // Filter matches first name.
                 } else if (Tableview_Controller.getSpalte11().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
+                    return true; // Filter matches last name.
                 }
-                return false;
+                return false; // Does not match.
             });
         });
-        //  Wrap liste.
+        // 3. Wrap the FilteredList in a SortedList.
         SortedList<Tableview_Controller> sortedData = new SortedList<>(filteredList);
 
+        // 4. Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(chart.comparatorProperty());
 
+        // 5. Add sorted (and filtered) data to the table.
         chart.setItems(sortedData);
 
     }
@@ -180,7 +182,7 @@ public class Controller_Filtered_Customer implements Initializable {
         EinstiegsPunkt.tbo.setSeriennummer(getitem.getSpalte10());
         EinstiegsPunkt.tbo.setgeraetenamen(getitem.getSpalte3());
         EinstiegsPunkt.tbo.setMac(getitem.getSpalte12());
-        EinstiegsPunkt.tbo.setLiefertermin(getitem.getSpalte9());
+        EinstiegsPunkt.tbo.setdatum(getitem.getSpalte9());
         EinstiegsPunkt.tbo.setTwiNr(getitem.getSpalte11());
         EinstiegsPunkt.tbo.setServicelvl(getitem.getSpalte5());
         EinstiegsPunkt.tbo.setServiceende(getitem.getSpalte8());

@@ -86,10 +86,5 @@
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="Exit_Button1" layoutX="17.0" layoutY="456.0" mnemonicParsing="false" onAction="#ExitButton" prefHeight="26.0" prefWidth="114.0" text="Exit">
-         <font>
-            <Font name="Calibri Bold" size="15.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

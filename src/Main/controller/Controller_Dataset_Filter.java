@@ -127,6 +127,7 @@ public class Controller_Dataset_Filter implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Standort muss ausgewählt sein").showAndWait();
             }
 
+
         } else {
             new Alert(Alert.AlertType.ERROR, "Kundenname darf nicht leer sein").showAndWait();
         }
@@ -137,7 +138,6 @@ public class Controller_Dataset_Filter implements Initializable {
         new DatenbankHandler().Connect();
         String query = "select Device_Type_ID from DeviceType where Devicename = " + "'" + comboFieldGeraet.getValue() + "'";
         //String query2 = "Select device_id from device2 where device_name = " + "'" + comboFieldGeraet.getValue() + "'";
-        //
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
         ResultSet rs = stm.executeQuery();
         //PreparedStatement stm2 = DatenbankHandler.connection.prepareStatement(query2);

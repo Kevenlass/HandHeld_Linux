@@ -10,18 +10,18 @@ public class ZeitComboBoxen {
     private List<String> monate_liste;
     public ZeitComboBoxen() {
         monate_liste = Arrays.asList(new String[]{
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10",
-                "11",
-                "12"
+                "Januar",
+                "Februar",
+                "März",
+                "April",
+                "Mai",
+                "Juni",
+                "Juli",
+                "August",
+                "September",
+                "Oktober",
+                "November",
+                "Dezember"
         }.clone());
     }
     public void LoadComboBoxes(ComboBox ComboBox_Tag_Anfang,ComboBox ComboBox_Monat_Anfang,ComboBox ComboBox_Jahr_Anfang,ComboBox ComboBox_Tag_Ende,ComboBox ComboBox_Monat_Ende,ComboBox ComboBox_Jahr_Ende ) throws SQLException {

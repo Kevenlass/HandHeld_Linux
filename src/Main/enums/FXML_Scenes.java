@@ -7,6 +7,5 @@ public enum FXML_Scenes {
     Dataset_Customer,
     Filtered_Customer,
     Dataset_Device,
-    Settings, Edit_Filtered_Customer,
-    Device_History_Filter
+    Settings, Edit_Filtered_Customer
 }
