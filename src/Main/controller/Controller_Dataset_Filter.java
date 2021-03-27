@@ -127,7 +127,6 @@ public class Controller_Dataset_Filter implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Standort muss ausgewählt sein").showAndWait();
             }
 
-
         } else {
             new Alert(Alert.AlertType.ERROR, "Kundenname darf nicht leer sein").showAndWait();
         }
