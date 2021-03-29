@@ -119,7 +119,7 @@ public class Controller_Dataset_Filter implements Initializable {
                     EinstiegsPunkt.g_u_s.setStandort(comboFieldStandort.getSelectionModel().getSelectedItem().toString());
                     System.out.println(EinstiegsPunkt.g_u_s.getStandort()+EinstiegsPunkt.g_u_s.getDevicename());
 
-                    EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer);
+                    EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer_Tableview);
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Gerät muss ausgewählt sein").showAndWait();
                 }

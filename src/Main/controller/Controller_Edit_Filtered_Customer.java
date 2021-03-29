@@ -51,7 +51,7 @@ public class Controller_Edit_Filtered_Customer implements Initializable {
         try {
             Stage stage = (Stage) Abort_Button.getScene().getWindow();
             stage.close();
-            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer);
+            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer_Tableview);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,11 +23,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class Controller_Filtered_Customer implements Initializable {
+public class Controller_Filtered_Customer_Tableview implements Initializable {
     @FXML
     private TextField Searchfield;
     @FXML
-    private Button anfordern;
+    private Button anfordern,History_Button;
     @FXML
     private TableView<Tableview_Controller> chart;
     @FXML
@@ -193,6 +194,19 @@ public class Controller_Filtered_Customer implements Initializable {
     @FXML
     public void returnToFilter() throws IOException {
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Filter);
+    }
+
+    @FXML
+    public void History() {
+        try {
+            Stage stage = (Stage) History_Button.getScene().getWindow();
+            stage.close();
+            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Device_History_Filter);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
