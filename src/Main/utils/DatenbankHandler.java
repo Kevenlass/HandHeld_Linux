@@ -95,7 +95,7 @@ public class DatenbankHandler {
             if (username.equals(Username)) {
                 flag = true;
                 if (BCrypt.checkpw(password, Hash)) {
-                    EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Hauptmenue);
+                    EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Filter);
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Passwort nicht korrekt").showAndWait();
                 }
