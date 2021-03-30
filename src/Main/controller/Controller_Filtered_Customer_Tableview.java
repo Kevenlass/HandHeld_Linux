@@ -48,8 +48,18 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     public void fillChart() throws SQLException {
 
         new DatenbankHandler().Connect();
-        String query = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
+        String testquery="";
+        if (EinstiegsPunkt.g_u_s.getDevicename()!= null  || !EinstiegsPunkt.g_u_s.getDevicename().equals("")) {
+            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
+        }
+        if (EinstiegsPunkt.g_u_s.getStandort() == null || EinstiegsPunkt.g_u_s.getStandort() == ""){
+            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'";
+        }
+        if (EinstiegsPunkt.g_u_s.getKundenname() == null || EinstiegsPunkt.g_u_s.getKundenname() == ""){
+            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'";
+        }
+
+        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(testquery);
         ResultSet rs = stm.executeQuery();
         boolean run = false;
 

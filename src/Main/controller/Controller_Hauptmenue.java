@@ -40,7 +40,7 @@ public class Controller_Hauptmenue implements Initializable {
 
     @FXML
     public void New_Customer() throws IOException {
-        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Customer);
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Customer);
     }
 
     @FXML

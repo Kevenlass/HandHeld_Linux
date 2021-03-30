@@ -17,7 +17,7 @@
          </effect></ComboBox>
       <Pane layoutX="400.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
-            <Button fx:id="getDatasetFromDb" layoutX="11.0" layoutY="349.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Daten Anfordern">
+            <Button fx:id="get_Dataset_Database_Button" layoutX="11.0" layoutY="349.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Daten Anfordern">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
@@ -27,7 +27,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="getDatasetFromDb11" layoutX="11.0" layoutY="54.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Neuer Kunde">
+            <Button fx:id="new_Customer_Button" layoutX="11.0" layoutY="54.0" mnemonicParsing="false" onAction="#New_Dataset_Customer" prefHeight="38.0" prefWidth="178.0" text="Neuer Kunde">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>

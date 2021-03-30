@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class Controller_Dataset_Customer implements Initializable {
+public class Controller_New_Dataset_Customer implements Initializable {
 
     public Getter_Und_Setter g_u_s = new Getter_Und_Setter();
     @FXML
@@ -133,7 +133,7 @@ public class Controller_Dataset_Customer implements Initializable {
 
     @FXML
     private void zurück() throws IOException {
-        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Hauptmenue);
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Filter);
     }
 
     private void Datensatz_in_SQL_Übergeben() throws SQLException {

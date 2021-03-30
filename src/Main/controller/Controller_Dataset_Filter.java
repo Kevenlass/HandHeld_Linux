@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -29,6 +28,7 @@ public class Controller_Dataset_Filter implements Initializable {
         PreparedStatement psmt = DatenbankHandler.connection.prepareStatement(query);
 
         ResultSet rs = psmt.executeQuery();
+        comboFieldKunde.getItems().add("");
         while (rs.next()) {
             String name = rs.getString("Kunden_Name");
             boolean schonVorhanden = false;
@@ -51,6 +51,7 @@ public class Controller_Dataset_Filter implements Initializable {
         ResultSet rs = stm.executeQuery();
         comboFieldStandort.requestLayout();
         comboFieldStandort.getItems().clear();
+        comboFieldStandort.getItems().add("");
         while (rs.next()) {
             comboFieldStandort.getItems().add(rs.getString("Standort"));
         }
@@ -70,11 +71,10 @@ public class Controller_Dataset_Filter implements Initializable {
         try {
 
             Zuweisung_Standort();
-            SetKundenNameProperty();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        //comboFieldStandort.setValue(comboFieldStandort.getItems().get(0));
     }
 
     public void Datensatz_Anlegen_Group_ID(String kunden_name, String group_id) {
@@ -89,19 +89,17 @@ public class Controller_Dataset_Filter implements Initializable {
         String query = "SELECT * FROM DeviceType";
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
         ResultSet rs = stm.executeQuery();
+        comboFieldGeraet.getItems().add("");
         while (rs.next()) {
             comboFieldGeraet.getItems().add(rs.getString("Devicename"));
         }
+
         Platform.runLater(()->comboFieldGeraet.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexThree()));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {{
-            //if (comboFieldKunde.getSelectionModel().getSelectedIndex() == -1){;
-
-            System.out.println("HALOOOOOOOOOOOOOOOOOOOOo");}
-
+        try {
             CustomerTabelle();
             DeviceTypeTabelle();
         } catch (SQLException throwables) {
@@ -123,7 +121,7 @@ public class Controller_Dataset_Filter implements Initializable {
                     EinstiegsPunkt.g_u_s.setDevicename(comboFieldGeraet.getSelectionModel().getSelectedItem().toString());
                     EinstiegsPunkt.g_u_s.setStandort(comboFieldStandort.getSelectionModel().getSelectedItem().toString());
                     System.out.println(EinstiegsPunkt.g_u_s.getStandort()+EinstiegsPunkt.g_u_s.getDevicename());
-
+                    getIndex();
                     EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer_Tableview);
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Gerät muss ausgewählt sein").showAndWait();
@@ -142,11 +140,8 @@ public class Controller_Dataset_Filter implements Initializable {
     public void Device_Type_ID(ActionEvent event) throws SQLException {
         new DatenbankHandler().Connect();
         String query = "select Device_Type_ID from DeviceType where Devicename = " + "'" + comboFieldGeraet.getValue() + "'";
-        //String query2 = "Select device_id from device2 where device_name = " + "'" + comboFieldGeraet.getValue() + "'";
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
         ResultSet rs = stm.executeQuery();
-        //PreparedStatement stm2 = DatenbankHandler.connection.prepareStatement(query2);
-        //ResultSet rs2 = stm2.executeQuery();
         while (rs.next()) {
             String Devicename = rs.getString("Device_Type_id");
             EinstiegsPunkt.g_u_s.setDeviceTypeID(Devicename);
@@ -154,26 +149,21 @@ public class Controller_Dataset_Filter implements Initializable {
             System.out.println(EinstiegsPunkt.g_u_s.getDeviceTypeID());
             System.out.println(EinstiegsPunkt.g_u_s.getDevicename());
         }
-//        while (rs2.next()){
-//            String deviceID = rs2.getString("Device_id");
-//            EinstiegsPunkt.g_u_s.setDevice_id(deviceID);
-//            System.out.println(EinstiegsPunkt.g_u_s.getDevice_id());
-//        }
+
     }
     @FXML
     public void New_Dataset_Device() throws IOException {
         getIndex();
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Device);
     }
-    private void SetKundenNameProperty() {
-
-
+    public void New_Dataset_Customer() throws IOException {
+        getIndex();
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Customer);
     }
+
     public void getIndex(){
         EinstiegsPunkt.g_u_s.setIndexOne(comboFieldKunde.getSelectionModel().getSelectedIndex());
         EinstiegsPunkt.g_u_s.setIndexTwo(comboFieldStandort.getSelectionModel().getSelectedIndex());
         EinstiegsPunkt.g_u_s.setIndexThree(comboFieldGeraet.getSelectionModel().getSelectedIndex());
-        System.out.println(EinstiegsPunkt.g_u_s.getIndexOne());
     }
-
 }
