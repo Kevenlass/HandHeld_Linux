@@ -27,7 +27,7 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     @FXML
     private TextField Searchfield;
     @FXML
-    private Button anfordern,History_Button;
+    private Button anfordern, History_Button;
     @FXML
     private TableView<Tableview_Controller> chart;
     @FXML
@@ -48,17 +48,24 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     public void fillChart() throws SQLException {
 
         new DatenbankHandler().Connect();
-        String testquery="";
-        if (EinstiegsPunkt.g_u_s.getDevicename()!= null  || !EinstiegsPunkt.g_u_s.getDevicename().equals("")) {
-            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-        }
-        if (EinstiegsPunkt.g_u_s.getStandort() == null || EinstiegsPunkt.g_u_s.getStandort() == ""){
-            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'";
-        }
-        if (EinstiegsPunkt.g_u_s.getKundenname() == null || EinstiegsPunkt.g_u_s.getKundenname() == ""){
-            testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'";
-        }
+        String testquery = "";
 
+        //Nur kunde ist ausgewählt!!!
+        if (EinstiegsPunkt.g_u_s.getKundenname() != null || EinstiegsPunkt.g_u_s.getKundenname() != "Kunde Wählen") {
+            if (EinstiegsPunkt.g_u_s.getStandort() == "Optional Standort Auswählen") {
+                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
+                    testquery = "Select * From Device2 where Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'";
+                }
+            }
+            if (EinstiegsPunkt.g_u_s.getStandort() != "Optional Standort Auswählen") {
+                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
+                    testquery = "Select * From Device2 where Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
+                }
+                else if(EinstiegsPunkt.g_u_s.getDevicename()!="Optional Gerät Auswählen"){
+                    testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
+                }
+            }
+        }
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(testquery);
         ResultSet rs = stm.executeQuery();
         boolean run = false;
@@ -164,9 +171,11 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
                 // vergleich.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (Tableview_Controller.getSpalte1().toLowerCase().contains(lowerCaseFilter)) {
+                if (Tableview_Controller.getSpalte5().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (Tableview_Controller.getSpalte11().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (Tableview_Controller.getSpalte6().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (Tableview_Controller.getSpalte7().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;

@@ -28,7 +28,7 @@ public class Controller_Dataset_Filter implements Initializable {
         PreparedStatement psmt = DatenbankHandler.connection.prepareStatement(query);
 
         ResultSet rs = psmt.executeQuery();
-        comboFieldKunde.getItems().add("");
+        comboFieldKunde.getItems().add("Kunde Wählen");
         while (rs.next()) {
             String name = rs.getString("Kunden_Name");
             boolean schonVorhanden = false;
@@ -51,7 +51,7 @@ public class Controller_Dataset_Filter implements Initializable {
         ResultSet rs = stm.executeQuery();
         comboFieldStandort.requestLayout();
         comboFieldStandort.getItems().clear();
-        comboFieldStandort.getItems().add("");
+        comboFieldStandort.getItems().add("Optional Standort Auswählen");
         while (rs.next()) {
             comboFieldStandort.getItems().add(rs.getString("Standort"));
         }
@@ -89,7 +89,7 @@ public class Controller_Dataset_Filter implements Initializable {
         String query = "SELECT * FROM DeviceType";
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
         ResultSet rs = stm.executeQuery();
-        comboFieldGeraet.getItems().add("");
+        comboFieldGeraet.getItems().add("Optional Gerät Auswählen");
         while (rs.next()) {
             comboFieldGeraet.getItems().add(rs.getString("Devicename"));
         }
