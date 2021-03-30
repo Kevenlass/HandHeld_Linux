@@ -155,7 +155,10 @@ public class Controller_Dataset_Filter implements Initializable {
 //            System.out.println(EinstiegsPunkt.g_u_s.getDevice_id());
 //        }
     }
-
+    @FXML
+    public void New_Dataset_Device() throws IOException {
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Device);
+    }
     private void SetKundenNameProperty() {
 
     }

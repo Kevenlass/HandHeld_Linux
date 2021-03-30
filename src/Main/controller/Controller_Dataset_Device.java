@@ -3,7 +3,6 @@ package Main.controller;
 import Main.EinstiegsPunkt;
 import Main.enums.FXML_Scenes;
 import Main.utils.DatenbankHandler;
-import Main.utils.ZeitComboBoxen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,8 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -25,66 +22,78 @@ public class Controller_Dataset_Device implements Initializable {
     @FXML
     private Label Datum_Label;
     @FXML
-    private ComboBox ComboBox_Tag_Anfang, ComboBox_Monat_Anfang, ComboBox_Jahr_Anfang, ComboBox_Tag_Ende, ComboBox_Monat_Ende, ComboBox_Jahr_Ende;
-    @FXML
-    private ComboBox comboboxStatus, comboboxServiceLVL, comboboxLieferant, comboFieldGeraet, comboFieldKunde, comboFieldStandort;
+    private ComboBox ComboBox_Tag_Anfang, ComboBox_Monat_Anfang, ComboBox_Jahr_Anfang, ComboBox_Tag_Ende, ComboBox_Monat_Ende,
+            ComboBox_Jahr_Ende,comboboxStatus, comboboxServiceLVL, comboboxLieferant, comboFieldGeraet, comboFieldKunde, comboFieldStandort;
+
     @FXML
     private TextField textfield_twi_nr, textfield_mac_adresse, textfield_seriennummer;
     @FXML
     private Button datensatz_anlegen;
     @FXML
     private DatePicker LieferterminDT;
-    private List<String> monate_liste;
+
 
     @FXML
-    private void time() {
+    private void systemDateTime() {
         LocalDate CurrentDate = LocalDate.now();
         Datum_Label.setText(CurrentDate.toString());
     }
 
     public Controller_Dataset_Device() {
-        monate_liste = Arrays.asList(new String[]{
-                "Januar",
-                "Februar",
-                "März",
-                "April",
-                "Mai",
-                "Juni",
-                "Juli",
-                "August",
-                "September",
-                "Oktober",
-                "November",
-                "Dezember"
-        }.clone());
+
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        time();
+        systemDateTime();
         try {
-            new ZeitComboBoxen().LoadComboBoxes(ComboBox_Tag_Anfang, ComboBox_Monat_Anfang, ComboBox_Jahr_Anfang, ComboBox_Tag_Ende, ComboBox_Monat_Ende, ComboBox_Jahr_Ende);
-            kundencmbxladen();
+            loadFillComboboxes();
             DeviceTypeTabelle();
-            CustomerTabelle();
-            combobox_change_font_style();
+            getCustomer();
+            comboboxChangeFontStyle();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         System.out.println("Controller: Controller_New_Dataset wurde geladen..");
     }
 
-    private void kundencmbxladen() throws SQLException {
-        DeviceTabelle2(comboboxStatus, "Status");
-        DeviceTabelle2(comboboxLieferant, "lieferant");
-        DeviceTabelle2(comboboxServiceLVL, "Servicelvl");
-        //comboboxStatus.setValue(comboboxStatus.getItems().get(0));
-        //comboboxLieferant.setValue(comboboxLieferant.getItems().get(0));
-        //comboboxServiceLVL.setValue(comboboxServiceLVL.getItems().get(0));
+    private void loadFillComboboxes() throws SQLException {
+        fillComboboxes(comboboxStatus, "Status");
+        fillComboboxes(comboboxLieferant, "lieferant");
+        fillComboboxes(comboboxServiceLVL, "Servicelvl");
     }
 
-    public void Datensatz_Anlegen_Group_ID(String kunden_name, String group_id) {
+
+    private void fillComboboxes(ComboBox comboBox, String ColumLabel) throws SQLException {
+        new DatenbankHandler().Connect();
+        String query = "SELECT * FROM Device2";
+        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
+        ResultSet rs = stm.executeQuery();
+
+        while (rs.next()) {
+            String PlaceHolder = rs.getString(ColumLabel);
+            boolean bool = false;
+            for (int i = 0; i < comboBox.getItems().size(); i++) {
+
+                if (PlaceHolder != null) {
+                    if (PlaceHolder.equals(comboBox.getItems().get(i))) {
+                        bool = true;
+                    }
+                }
+            }
+            if (bool == false && PlaceHolder != null) {
+                comboBox.getItems().add(rs.getString(ColumLabel));
+            }
+        }
+        DatenbankHandler.connection.close();
+    }
+
+
+
+
+
+    public void setGroupID(String kunden_name, String group_id) {
 
         if (kunden_name.equals(comboFieldKunde.getSelectionModel().getSelectedItem())) {
             // g_u_s.setGroup_id(group_id);
@@ -92,10 +101,25 @@ public class Controller_Dataset_Device implements Initializable {
         }
     }
 
-    public void Zuweisung_Standort() throws SQLException {
+    public void comboAction_Kunde(ActionEvent event) {
+        setGroupID("", "0");
+        setGroupID("Lekkerland", "2");
+        setGroupID("Bodan", "3");
+        setGroupID("TWI", "1");
+        setGroupID("GGT", "4");
+        setGroupID("Fixmer", "5");
+        setGroupID("HvL", "6");
+        try {
+            setLocation();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void setLocation() throws SQLException {
         new DatenbankHandler().Connect();
 
-        String query = "select Standort from Customer where group_id = " + "'" + EinstiegsPunkt.g_u_s.getGroup_id().toString() + "'";
+        String query = "SELECT Standort FROM Customer WHERE group_id = " + "'" + EinstiegsPunkt.g_u_s.getGroup_id().toString() + "'";
         PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
         ResultSet rs = stm.executeQuery();
         comboFieldStandort.requestLayout();
@@ -106,23 +130,9 @@ public class Controller_Dataset_Device implements Initializable {
         DatenbankHandler.connection.close();
     }
 
-    public void comboAction_Kunde(ActionEvent event) {
-        Datensatz_Anlegen_Group_ID("", "0");
-        Datensatz_Anlegen_Group_ID("Lekkerland", "2");
-        Datensatz_Anlegen_Group_ID("Bodan", "3");
-        Datensatz_Anlegen_Group_ID("TWI", "1");
-        Datensatz_Anlegen_Group_ID("GGT", "4");
-        Datensatz_Anlegen_Group_ID("Fixmer", "5");
-        Datensatz_Anlegen_Group_ID("HvL", "6");
-        try {
-            Zuweisung_Standort();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        //comboFieldStandort.setValue(comboFieldStandort.getItems().get(0));
-    }
 
-    public void CustomerTabelle() throws SQLException {
+
+    public void getCustomer() throws SQLException {
         new DatenbankHandler().Connect();
         String query = "SELECT * FROM Customer";
         PreparedStatement psmt = DatenbankHandler.connection.prepareStatement(query);
@@ -170,30 +180,7 @@ public class Controller_Dataset_Device implements Initializable {
         DatenbankHandler.connection.close();
     }
 
-    private void DeviceTabelle2(ComboBox comboBox, String ColumLabel) throws SQLException {
-        new DatenbankHandler().Connect();
-        String query = "SELECT * FROM Device2";
-        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(query);
-        ResultSet rs = stm.executeQuery();
 
-        while (rs.next()) {
-            String Status = rs.getString(ColumLabel);
-            boolean bool = false;
-            for (int i = 0; i < comboBox.getItems().size(); i++) {
-
-                if (Status != null) {
-                    if (Status.equals(comboBox.getItems().get(i))) {
-                        bool = true;
-                    }
-                }
-            }
-            if (bool == false && Status != null) {
-                comboBox.getItems().add(rs.getString(ColumLabel));
-                //comboBox.setValue(comboboxStatus.getItems().get(0));
-            }
-        }
-        DatenbankHandler.connection.close();
-    }
 
     public void Combo_fontsize_new_dataset(ComboBox comb) {
         comb.setStyle("-fx-font: 16px \"Arial black\";");
@@ -203,7 +190,7 @@ public class Controller_Dataset_Device implements Initializable {
         comb.setStyle("-fx-font: 14px \"Arial black\";");
     }
 
-    public void combobox_change_font_style() {
+    public void comboboxChangeFontStyle() {
         Combo_fontsize_new_dataset(comboFieldKunde);
         Combo_fontsize_new_dataset(comboboxLieferant);
         Combo_fontsize_new_dataset(comboboxServiceLVL);
