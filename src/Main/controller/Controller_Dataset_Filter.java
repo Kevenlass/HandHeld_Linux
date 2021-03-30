@@ -3,6 +3,7 @@ package Main.controller;
 import Main.EinstiegsPunkt;
 import Main.enums.FXML_Scenes;
 import Main.utils.DatenbankHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,8 +41,7 @@ public class Controller_Dataset_Filter implements Initializable {
                 comboFieldKunde.getItems().add(rs.getString("Kunden_Name"));
             }
         }
-
-        //comboFieldKunde.setValue(comboFieldKunde.getItems().get(0));
+        Platform.runLater(() -> comboFieldKunde.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexOne()));
     }
 
     public void Zuweisung_Standort() throws SQLException {
@@ -54,6 +54,7 @@ public class Controller_Dataset_Filter implements Initializable {
         while (rs.next()) {
             comboFieldStandort.getItems().add(rs.getString("Standort"));
         }
+        Platform.runLater(()->comboFieldStandort.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexTwo()));
     }
 
     public void comboAction_Kunde(ActionEvent event) {
@@ -91,12 +92,16 @@ public class Controller_Dataset_Filter implements Initializable {
         while (rs.next()) {
             comboFieldGeraet.getItems().add(rs.getString("Devicename"));
         }
-        //comboFieldGeraet.setValue(comboFieldGeraet.getItems().get(0));
+        Platform.runLater(()->comboFieldGeraet.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexThree()));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
+        try {{
+            //if (comboFieldKunde.getSelectionModel().getSelectedIndex() == -1){;
+
+            System.out.println("HALOOOOOOOOOOOOOOOOOOOOo");}
+
             CustomerTabelle();
             DeviceTypeTabelle();
         } catch (SQLException throwables) {
@@ -157,9 +162,18 @@ public class Controller_Dataset_Filter implements Initializable {
     }
     @FXML
     public void New_Dataset_Device() throws IOException {
-        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Device);
+        getIndex();
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Device);
     }
     private void SetKundenNameProperty() {
 
+
     }
+    public void getIndex(){
+        EinstiegsPunkt.g_u_s.setIndexOne(comboFieldKunde.getSelectionModel().getSelectedIndex());
+        EinstiegsPunkt.g_u_s.setIndexTwo(comboFieldStandort.getSelectionModel().getSelectedIndex());
+        EinstiegsPunkt.g_u_s.setIndexThree(comboFieldGeraet.getSelectionModel().getSelectedIndex());
+        System.out.println(EinstiegsPunkt.g_u_s.getIndexOne());
+    }
+
 }

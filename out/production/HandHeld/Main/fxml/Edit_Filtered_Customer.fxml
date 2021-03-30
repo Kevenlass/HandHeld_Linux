@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1325.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Edit_Filtered_Customer">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1353.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Edit_Filtered_Customer">
    <children>
-      <Label layoutX="495.0" layoutY="35.0" text="Edit Customer" textFill="WHITE">
+      <Label layoutX="494.0" layoutY="22.0" text="Edit Customer" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="53.0" />
          </font>
@@ -15,115 +15,121 @@
             <DropShadow />
          </effect>
       </Label>
-      <TextField fx:id="Kunde_Textbox" layoutX="139.0" layoutY="171.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Kunde_Textbox" layoutX="48.0" layoutY="146.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="Standort_Textbox" layoutX="527.0" layoutY="171.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Standort_Textbox" layoutX="387.0" layoutY="146.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="Devicename_Textbox" layoutX="139.0" layoutY="286.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Devicename_Textbox" layoutX="48.0" layoutY="261.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="MacAdresse_Textbox" layoutX="906.0" layoutY="519.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="MacAdresse_Textbox" layoutX="1037.0" layoutY="261.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="Seriennummer_Textbox" layoutX="139.0" layoutY="518.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Seriennummer_Textbox" layoutX="45.0" layoutY="482.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="ServiceAnfang_Textbox" layoutX="527.0" layoutY="286.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="ServiceAnfang_Textbox" layoutX="387.0" layoutY="261.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="ServiceLvl_Textbox" layoutX="139.0" layoutY="398.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="ServiceLvl_Textbox" layoutX="48.0" layoutY="373.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="TwiNr_textbox" layoutX="527.0" layoutY="516.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="TwiNr_textbox" layoutX="389.0" layoutY="482.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="Lieferant_Textbox" layoutX="527.0" layoutY="398.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Lieferant_Textbox" layoutX="387.0" layoutY="373.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <Button fx:id="Save_Button" layoutX="1031.0" layoutY="638.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="262.0" text="Speichern" />
-      <Label layoutX="139.0" layoutY="131.0" text="Kunde" textFill="WHITE">
+      <Button fx:id="Save_Button" layoutX="1031.0" layoutY="638.0" mnemonicParsing="false" onAction="#InsertAndUpdate" prefHeight="34.0" prefWidth="262.0" text="Speichern" />
+      <Label layoutX="48.0" layoutY="106.0" text="Kunde" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="139.0" layoutY="244.0" text="Geräte Name" textFill="WHITE">
+      <Label layoutX="48.0" layoutY="219.0" text="Geräte Name" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="139.0" layoutY="354.0" text="ServiceLvL" textFill="WHITE">
+      <Label layoutX="48.0" layoutY="329.0" text="ServiceLvL" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="131.0" text="Standort" textFill="WHITE">
+      <Label layoutX="387.0" layoutY="106.0" text="Standort" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="244.0" text="Service Anfang" textFill="WHITE">
+      <Label layoutX="387.0" layoutY="219.0" text="Service Anfang" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="354.0" text="Lieferant" textFill="WHITE">
+      <Label layoutX="387.0" layoutY="329.0" text="Lieferant" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="906.0" layoutY="479.0" text="Mac Adresse" textFill="WHITE">
+      <Label layoutX="1033.0" layoutY="219.0" text="Mac Adresse" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="139.0" layoutY="476.0" text="Seriennummer" textFill="WHITE">
+      <Label layoutX="45.0" layoutY="439.0" text="Seriennummer" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="472.0" text="Twi.Nr" textFill="WHITE">
+      <Label layoutX="393.0" layoutY="441.0" text="Twi.Nr" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="Status_Textbox" layoutX="906.0" layoutY="169.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Status_Textbox" layoutX="723.0" layoutY="146.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="ServiceEnde_Texbox" layoutX="906.0" layoutY="284.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="ServiceEnde_Texbox" layoutX="723.0" layoutY="261.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <TextField fx:id="Liefertermin_Textbox" layoutX="906.0" layoutY="396.0" prefHeight="34.0" prefWidth="256.0">
+      <TextField fx:id="Liefertermin_Textbox" layoutX="1037.0" layoutY="146.0" prefHeight="34.0" prefWidth="256.0">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></TextField>
-      <Label layoutX="906.0" layoutY="129.0" text="Status" textFill="WHITE">
+      <Label layoutX="723.0" layoutY="108.0" text="Status" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="906.0" layoutY="242.0" text="Service Ende" textFill="WHITE">
+      <Label layoutX="723.0" layoutY="219.0" text="Service Ende" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="906.0" layoutY="352.0" text="Liefertermin" textFill="WHITE">
+      <Label layoutX="1037.0" layoutY="102.0" text="Liefertermin" textFill="WHITE">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="Abort_Button" layoutX="32.0" layoutY="638.0" mnemonicParsing="false" onAction="#Abort" prefHeight="34.0" prefWidth="262.0" text="Abbrechen" />
+      <Button fx:id="Abort_Button" layoutX="42.0" layoutY="638.0" mnemonicParsing="false" onAction="#Abort" prefHeight="34.0" prefWidth="262.0" text="Abbrechen" />
+      <Label layoutX="723.0" layoutY="329.0" text="Freitext" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="723.0" layoutY="372.0" prefHeight="145.0" prefWidth="574.0" />
    </children>
 </Pane>

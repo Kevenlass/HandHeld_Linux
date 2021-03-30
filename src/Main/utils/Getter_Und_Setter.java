@@ -286,5 +286,35 @@ private String Password;
     public void Customer_name(){
         System.out.println("hallo");
     }
+
+    private int IndexOne;
+
+    public int getIndexOne() {
+        return IndexOne;
+    }
+
+    public void setIndexOne(int indexOne) {
+        IndexOne = indexOne;
+    }
+
+    private int IndexTwo;
+
+    public int getIndexTwo() {
+        return IndexTwo;
+    }
+
+    public void setIndexTwo(int indexTwo) {
+        IndexTwo = indexTwo;
+    }
+
+    private int IndexThree;
+
+    public int getIndexThree() {
+        return IndexThree;
+    }
+
+    public void setIndexThree(int indexThree) {
+        IndexThree = indexThree;
+    }
 }
 

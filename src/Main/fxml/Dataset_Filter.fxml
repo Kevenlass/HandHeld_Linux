@@ -15,13 +15,6 @@
          <effect>
             <DropShadow />
          </effect></ComboBox>
-      <Button layoutX="28.0" layoutY="348.0" mnemonicParsing="false" onAction="#zurueck" prefHeight="38.0" prefWidth="136.0" text="Zurück">
-         <font>
-            <Font name="Times New Roman Bold" size="18.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect></Button>
       <Pane layoutX="400.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="getDatasetFromDb" layoutX="11.0" layoutY="349.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Daten Anfordern">

@@ -6,7 +6,7 @@ public enum FXML_Scenes {
     Dataset_Filter,
     Dataset_Customer,
     Filtered_Customer_Tableview,
-    Dataset_Device,
+    New_Dataset_Device,
     Settings, Edit_Filtered_Customer,
     Device_History_Filter
 }

@@ -29,7 +29,7 @@ public class Controller_Hauptmenue implements Initializable {
 
     @FXML
     public void New_Dataset() throws IOException {
-        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Device);
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Device);
     }
 
     public Controller_Hauptmenue() {

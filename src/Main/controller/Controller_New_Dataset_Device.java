@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class Controller_Dataset_Device implements Initializable {
+public class Controller_New_Dataset_Device implements Initializable {
 
     @FXML
     private Label Datum_Label;
@@ -39,7 +38,7 @@ public class Controller_Dataset_Device implements Initializable {
         Datum_Label.setText(CurrentDate.toString());
     }
 
-    public Controller_Dataset_Device() {
+    public Controller_New_Dataset_Device() {
 
     }
 
@@ -219,7 +218,7 @@ public class Controller_Dataset_Device implements Initializable {
 
     @FXML
     public void zurück() throws IOException {
-        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Hauptmenue);
+        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Dataset_Filter);
     }
 
     public void Datensatz_in_SQL_Übergeben() throws SQLException {

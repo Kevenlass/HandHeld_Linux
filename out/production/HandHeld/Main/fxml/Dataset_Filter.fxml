@@ -7,21 +7,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller.Controller_Dataset_Filter">
    <children>
-      <ComboBox fx:id="comboFieldKunde" layoutX="34.0" layoutY="55.0" onAction="#comboAction_Kunde" prefHeight="38.0" prefWidth="351.0">
+      <ComboBox fx:id="comboFieldKunde" layoutX="28.0" layoutY="55.0" onAction="#comboAction_Kunde" prefHeight="38.0" prefWidth="351.0">
          <effect>
             <DropShadow />
          </effect></ComboBox>
-      <ComboBox fx:id="comboFieldStandort" layoutX="34.0" layoutY="150.0" prefHeight="38.0" prefWidth="351.0">
+      <ComboBox fx:id="comboFieldStandort" layoutX="28.0" layoutY="150.0" prefHeight="38.0" prefWidth="351.0">
          <effect>
             <DropShadow />
          </effect></ComboBox>
-      <Button layoutX="34.0" layoutY="348.0" mnemonicParsing="false" onAction="#zurueck" prefHeight="38.0" prefWidth="136.0" text="Zurück">
-         <font>
-            <Font name="Times New Roman Bold" size="18.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect></Button>
       <Pane layoutX="400.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="getDatasetFromDb" layoutX="11.0" layoutY="349.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Daten Anfordern">
@@ -29,23 +22,33 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Button>
+            <Button fx:id="new_Device_Button" layoutX="11.0" layoutY="190.0" mnemonicParsing="false" onAction="#New_Dataset_Device" prefHeight="38.0" prefWidth="178.0" text="Neues Gerät">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="getDatasetFromDb11" layoutX="11.0" layoutY="54.0" mnemonicParsing="false" onAction="#filteredWindow" prefHeight="38.0" prefWidth="178.0" text="Neuer Kunde">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
-      <ComboBox fx:id="comboFieldGeraet" layoutX="34.0" layoutY="240.0" onAction="#Device_Type_ID" prefHeight="38.0" prefWidth="351.0">
+      <ComboBox fx:id="comboFieldGeraet" layoutX="28.0" layoutY="240.0" onAction="#Device_Type_ID" prefHeight="38.0" prefWidth="351.0">
          <effect>
             <DropShadow />
          </effect></ComboBox>
-      <Label layoutX="175.0" layoutY="27.0" text="Kunde" textFill="#f8f8f8">
+      <Label layoutX="169.0" layoutY="27.0" text="Kunde" textFill="#f8f8f8">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="164.0" layoutY="122.0" text="Standort" textFill="#f8f8f8">
+      <Label layoutX="158.0" layoutY="122.0" text="Standort" textFill="#f8f8f8">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="212.0" text="Gerät" textFill="#f8f8f8">
+      <Label layoutX="174.0" layoutY="212.0" text="Gerät" textFill="#f8f8f8">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
