@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -55,11 +56,11 @@ public class Controller_Dataset_Filter implements Initializable {
         while (rs.next()) {
             comboFieldStandort.getItems().add(rs.getString("Standort"));
         }
-        Platform.runLater(()->comboFieldStandort.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexTwo()));
+        Platform.runLater(() -> comboFieldStandort.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexTwo()));
     }
 
     public void comboAction_Kunde(ActionEvent event) {
-        //Datensatz_Anlegen_Group_ID("", "0");
+        Datensatz_Anlegen_Group_ID("Optional Standort Auswählen", "0");
         Datensatz_Anlegen_Group_ID("Lekkerland", "2");
         Datensatz_Anlegen_Group_ID("Bodan", "3");
         Datensatz_Anlegen_Group_ID("TWI", "1");
@@ -82,6 +83,8 @@ public class Controller_Dataset_Filter implements Initializable {
         if (kunden_name.equals(comboFieldKunde.getSelectionModel().getSelectedItem())) {
             EinstiegsPunkt.g_u_s.setGroup_id(group_id);
         }
+
+
     }
 
     public void DeviceTypeTabelle() throws SQLException {
@@ -94,12 +97,14 @@ public class Controller_Dataset_Filter implements Initializable {
             comboFieldGeraet.getItems().add(rs.getString("Devicename"));
         }
 
-        Platform.runLater(()->comboFieldGeraet.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexThree()));
+        Platform.runLater(() -> comboFieldGeraet.getSelectionModel().select(EinstiegsPunkt.g_u_s.getIndexThree()));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            comboFieldStandort.getItems().add("Optional Standort Auswählen");
+
             CustomerTabelle();
             DeviceTypeTabelle();
         } catch (SQLException throwables) {
@@ -112,7 +117,7 @@ public class Controller_Dataset_Filter implements Initializable {
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Hauptmenue);
     }
 
-    @FXML
+        @FXML
     public void filteredWindow() throws IOException {
         if (comboFieldKunde.getSelectionModel().getSelectedItem() != null) {
             if (comboFieldStandort.getSelectionModel().getSelectedItem() != null) {
@@ -126,15 +131,36 @@ public class Controller_Dataset_Filter implements Initializable {
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Gerät muss ausgewählt sein").showAndWait();
                 }
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Standort muss ausgewählt sein").showAndWait();
+            } if (comboFieldStandort.getSelectionModel().getSelectedItem() == null) {
+                if (comboFieldGeraet.getSelectionModel().getSelectedItem() != null) {
+                    EinstiegsPunkt.g_u_s.setKundenname((comboFieldKunde.getSelectionModel().getSelectedItem().toString()));
+                    EinstiegsPunkt.g_u_s.setDevicename(comboFieldGeraet.getSelectionModel().getSelectedItem().toString());
+                    //EinstiegsPunkt.g_u_s.setStandort(comboFieldStandort.getSelectionModel().getSelectedItem().toString());
+                    System.out.println(EinstiegsPunkt.g_u_s.getStandort()+EinstiegsPunkt.g_u_s.getDevicename());
+                    getIndex();
+                    EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer_Tableview);
+                }
             }
-
 
         } else {
             new Alert(Alert.AlertType.ERROR, "Kundenname darf nicht leer sein").showAndWait();
         }
     }
+//    @FXML
+//    public void filteredWindow() throws IOException {
+//
+//        EinstiegsPunkt.g_u_s.setKundenname((comboFieldKunde.getSelectionModel().getSelectedItem().toString()));
+//
+//        EinstiegsPunkt.g_u_s.setDevicename(comboFieldGeraet.getSelectionModel().getSelectedItem().toString());
+////        if (comboFieldStandort.getSelectionModel().getSelectedItem().toString()== null){
+////            System.out.println("standort ist null");
+////        }
+//        if (comboFieldStandort.getSelectionModel().getSelectedItem() != null){
+//            EinstiegsPunkt.g_u_s.setStandort(comboFieldStandort.getSelectionModel().getSelectedItem().toString());
+//        }
+//        getIndex();
+//        EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Filtered_Customer_Tableview);
+//    }
 
     @FXML
     public void Device_Type_ID(ActionEvent event) throws SQLException {
@@ -151,17 +177,19 @@ public class Controller_Dataset_Filter implements Initializable {
         }
 
     }
+
     @FXML
     public void New_Dataset_Device() throws IOException {
         getIndex();
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Device);
     }
+
     public void New_Dataset_Customer() throws IOException {
         getIndex();
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Customer);
     }
 
-    public void getIndex(){
+    public void getIndex() {
         EinstiegsPunkt.g_u_s.setIndexOne(comboFieldKunde.getSelectionModel().getSelectedIndex());
         EinstiegsPunkt.g_u_s.setIndexTwo(comboFieldStandort.getSelectionModel().getSelectedIndex());
         EinstiegsPunkt.g_u_s.setIndexThree(comboFieldGeraet.getSelectionModel().getSelectedIndex());
