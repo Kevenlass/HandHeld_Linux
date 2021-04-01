@@ -27,7 +27,7 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     @FXML
     private TextField Searchfield;
     @FXML
-    private Button anfordern, History_Button;
+    private Button New_Device_Button, History_Button;
     @FXML
     private TableView<Tableview_Controller> chart;
     @FXML
@@ -208,6 +208,16 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    public void NewDevice(){
+
+        try {
+            Stage stage = (Stage) New_Device_Button.getScene().getWindow();
+            stage.close();
+            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.New_Dataset_Device);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
