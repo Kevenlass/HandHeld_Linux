@@ -48,54 +48,12 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     public void fillChart() throws SQLException {
 
         new DatenbankHandler().Connect();
-        String testquery = "";
-
-        //Nur kunde ist ausgewählt!!!
-        if (EinstiegsPunkt.g_u_s.getKundenname() != null || EinstiegsPunkt.g_u_s.getKundenname() != "Kunde Wählen") {
-            if (EinstiegsPunkt.g_u_s.getStandort() == "Optional Standort Auswählen") {
-                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'";
-                    System.out.println("nur kunde ");
-                }
-            }
-            if (EinstiegsPunkt.g_u_s.getStandort() != "Optional Standort Auswählen") {
-                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-                    System.out.println("kunde plus standort");
-                }
-                if (EinstiegsPunkt.g_u_s.getDevicename() != "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-                    System.out.println("alles ausgewählt");
-                }
-            }
-        }
-         if (EinstiegsPunkt.g_u_s.getKundenname() == null || EinstiegsPunkt.g_u_s.getKundenname() == "Kunde Wählen"){
-            if (EinstiegsPunkt.g_u_s.getStandort() == "Optional Standort Auswählen") {
-                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
-                    //testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'" + "and Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-                    new Alert(Alert.AlertType.ERROR, "Nichts Ausgewählt!!").showAndWait();
-                }
-                if (EinstiegsPunkt.g_u_s.getDevicename() != "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'";
-                    System.out.println("Nur gerät ausgewählt");
-                }
-            }
-            if (EinstiegsPunkt.g_u_s.getStandort() != "Optional Standort Auswählen") {
-                if (EinstiegsPunkt.g_u_s.getDevicename() == "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
-                }
-                if (EinstiegsPunkt.g_u_s.getDevicename() != "Optional Gerät Auswählen") {
-                    testquery = "Select * From Device2 where device_name = '" + EinstiegsPunkt.g_u_s.getDevicename() + "'";
-                    System.out.println("Nur gerät ausgewählt");
-                }
-            }
-        }
-            PreparedStatement stm = DatenbankHandler.connection.prepareStatement(testquery);
+        String testquery = "Select * From Device2 where Kunde = '" + EinstiegsPunkt.g_u_s.getKundenname() + "'" + "and Standort = '" + EinstiegsPunkt.g_u_s.getStandort() + "'";
+        PreparedStatement stm = DatenbankHandler.connection.prepareStatement(testquery);
         ResultSet rs = stm.executeQuery();
         boolean run = false;
 
         List<TableColumn> columns = new ArrayList<>();
-
 
         while (rs.next()) {
             if (!run) {
@@ -221,15 +179,15 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
 
         EinstiegsPunkt.tbo.setKundennamen(getitem.getSpalte1());
         EinstiegsPunkt.tbo.setStanort(getitem.getSpalte2());
-        EinstiegsPunkt.tbo.setSeriennummer(getitem.getSpalte10());
+        EinstiegsPunkt.tbo.setSeriennummer(getitem.getSpalte7());
         EinstiegsPunkt.tbo.setgeraetenamen(getitem.getSpalte3());
-        EinstiegsPunkt.tbo.setMac(getitem.getSpalte12());
-        EinstiegsPunkt.tbo.setdatum(getitem.getSpalte9());
-        EinstiegsPunkt.tbo.setTwiNr(getitem.getSpalte11());
-        EinstiegsPunkt.tbo.setServicelvl(getitem.getSpalte5());
-        EinstiegsPunkt.tbo.setServiceende(getitem.getSpalte8());
-        EinstiegsPunkt.tbo.setlieferant(getitem.getSpalte6());
-        EinstiegsPunkt.tbo.setServiceAnfang(getitem.getSpalte7());
+        EinstiegsPunkt.tbo.setMac(getitem.getSpalte6());
+        EinstiegsPunkt.tbo.setLiefertermin(getitem.getSpalte12());
+        EinstiegsPunkt.tbo.setTwiNr(getitem.getSpalte5());
+        EinstiegsPunkt.tbo.setServicelvl(getitem.getSpalte8());
+        EinstiegsPunkt.tbo.setServiceende(getitem.getSpalte11());
+        EinstiegsPunkt.tbo.setlieferant(getitem.getSpalte9());
+        EinstiegsPunkt.tbo.setServiceAnfang(getitem.getSpalte10());
         EinstiegsPunkt.tbo.setstatus(getitem.getSpalte4());
         EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Edit_Filtered_Customer);
     }
