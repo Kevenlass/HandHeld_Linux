@@ -10,10 +10,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -37,12 +34,14 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     private TableView<Tableview_Controller> chart;
     @FXML
     ObservableList<Tableview_Controller> DbListe = FXCollections.observableArrayList();
-
+    @FXML
+    private Label customerList_Label;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
+            customerList_Label.setText(EinstiegsPunkt.g_u_s.getWelcherKunde());
             fillChart();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -63,7 +62,7 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
         while (rs.next()) {
             if (!run) {
                 //Hier werden die Spalten generiert...
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                for (int i = 3; i <= rs.getMetaData().getColumnCount(); i++) {
                     TableColumn column = new TableColumn(rs.getMetaData().getColumnName(i));
                     column.setCellValueFactory(
                             new PropertyValueFactory<Tableview_Controller, String>("spalte" + i));
@@ -225,7 +224,6 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     }
 
     public void NewDevice() {
-
         try {
             Stage stage = (Stage) New_Device_Button.getScene().getWindow();
             stage.close();

@@ -36,6 +36,7 @@ public class Controller_Dataset_Filter implements Initializable {
             Concat = rs.getString("Kunden_Name");
             Concat2 = rs.getString("Standort");
             Concat3 = Concat + " " + Concat2;
+
             item.add(Concat3);
         }
         ListView_Customer.setStyle("-fx-font-size: 1.5em ;");
@@ -45,6 +46,7 @@ public class Controller_Dataset_Filter implements Initializable {
 
     @FXML
     public void getObjectListview() throws SQLException {
+        EinstiegsPunkt.g_u_s.setWelcherKunde(ListView_Customer.getSelectionModel().getSelectedItem().toString());
         String Check = ListView_Customer.getSelectionModel().getSelectedItem().toString();
         String [] splittetStrings = Check.split(" ");
 

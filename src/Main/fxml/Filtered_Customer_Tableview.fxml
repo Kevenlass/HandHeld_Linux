@@ -25,7 +25,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="Searchfield" layoutX="112.0" layoutY="14.0" prefHeight="24.0" prefWidth="238.0" />
+      <TextField fx:id="Searchfield" layoutX="853.0" layoutY="13.0" prefHeight="24.0" prefWidth="238.0" />
       <Button fx:id="History_Button" layoutX="927.0" layoutY="651.0" mnemonicParsing="false" onAction="#History" prefHeight="44.0" prefWidth="164.0" text="History">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
@@ -48,7 +48,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="23.0" layoutY="13.0" prefHeight="26.0" prefWidth="82.0" text="Suche:" textFill="WHITE">
+      <Label layoutX="771.0" layoutY="13.0" prefHeight="26.0" prefWidth="82.0" text="Suche:" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="customerList_Label" layoutX="23.0" layoutY="13.0" prefHeight="16.0" prefWidth="428.0" text="Label" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>

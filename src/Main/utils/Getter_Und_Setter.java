@@ -316,5 +316,15 @@ private String Password;
     public void setIndexThree(int indexThree) {
         IndexThree = indexThree;
     }
+
+    private String WelcherKunde;
+
+    public String getWelcherKunde() {
+        return WelcherKunde;
+    }
+
+    public void setWelcherKunde(String welcherKunde) {
+        WelcherKunde = welcherKunde;
+    }
 }
 
