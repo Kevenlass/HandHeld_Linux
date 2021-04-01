@@ -7,10 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -170,8 +175,17 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
 
         chart.setItems(sortedData);
 
+        chart.setOnMousePressed((EventHandler<MouseEvent>) event -> {
+            if (event.getClickCount() == 2) {
+                System.out.println(chart.getSelectionModel().getSelectedItem());
+                try {
+                    getobjectbutton();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
-
 
     public void getobjectbutton() throws IOException {
         Tableview_Controller getitem = chart.getSelectionModel().getSelectedItem();
@@ -209,7 +223,8 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
         }
 
     }
-    public void NewDevice(){
+
+    public void NewDevice() {
 
         try {
             Stage stage = (Stage) New_Device_Button.getScene().getWindow();
