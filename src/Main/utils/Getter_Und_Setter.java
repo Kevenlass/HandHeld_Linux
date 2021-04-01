@@ -326,5 +326,15 @@ private String Password;
     public void setWelcherKunde(String welcherKunde) {
         WelcherKunde = welcherKunde;
     }
+
+    private String twi_id_History;
+
+    public String getTwi_id_History() {
+        return twi_id_History;
+    }
+
+    public void setTwi_id_History(String twi_id_History) {
+        this.twi_id_History = twi_id_History;
+    }
 }
 

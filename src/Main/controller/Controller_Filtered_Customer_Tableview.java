@@ -213,9 +213,10 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
     @FXML
     public void History() {
         try {
+            EinstiegsPunkt.g_u_s.setTwi_id_History(chart.getSelectionModel().getSelectedItem().getSpalte5().toString());
             Stage stage = (Stage) History_Button.getScene().getWindow();
             stage.close();
-            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Device_History_Filter);
+            EinstiegsPunkt.sceneSwitcher.changeScene(FXML_Scenes.Device_History);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -231,6 +232,12 @@ public class Controller_Filtered_Customer_Tableview implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getHistory(){
+        EinstiegsPunkt.g_u_s.setTwi_id_History(chart.getSelectionModel().getSelectedItem().getSpalte5().toString());
+
+
     }
 }
 
